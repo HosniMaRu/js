@@ -1,1 +1,7 @@
 # RESPOSITORIO EJERCICIOS JS
+
+>ej 5 JS If
+
+>ej 6 JS If
+
+>ej 8 JS
