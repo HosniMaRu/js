@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Ejercicio 8</title>
+		<script>
+			function ej8() {
+				let askNumber = prompt("Introduzca un numero");
+				const getElement = document.getElementById("result");
+				if (!isNaN(askNumber)) {
+					if (askNumber % 2 == true) {
+						getElement.innerHTML = `El numero ${askNumber} es impar`;
+					} else {
+						getElement.innerHTML = `El numero ${askNumber} es par`;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="ej8()">Check number - ej8</button>
+		<p id="result"></p>
+	</body>
+</html>
