@@ -12,12 +12,37 @@
 					getElement.innerHTML = `El numero ${askNumber} es menor a 0`;
 				} else if (!isNaN(askNumber) && askNumber > 99999999) {
 					getElement.innerHTML = `El numero ${askNumber} es mayor a 99999999`;
+				} else if (!isNaN(askNumber) && 0 < askNumber < 99999999) {
+					getElement.innerHTML = `El numero ${askNumber} esta entre 0 y 99999999`;
+				} else {
+					getElement.innerHTML = `El numero ${askNumber} no és un valor numerico`;
 				}
 			}
 		</script>
+		<style>
+			body {
+				text-align: center;
+			}
+			a {
+				background-color: grey;
+				text-decoration: none;
+				color: white;
+				padding: 8px;
+				border: black solid 1px;
+				margin: auto;
+				display: block;
+				width: fit-content;
+			}
+			button {
+				margin-top: 50px;
+			}
+		</style>
 	</head>
 	<body>
-		<button onclick="ej6()">Check number - ej6</button>
-		<p id="result"></p>
+		<a href="../index.html">BACK</a>
+		<div>
+			<button onclick="ej6()">Check number - ej6</button>
+			<p id="result"></p>
+		</div>
 	</body>
 </html>
