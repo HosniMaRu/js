@@ -80,4 +80,4 @@
 
 > > `>>`
 
-> > `>>>>` Unsigned right shift
+> > `>>>` Unsigned right shift
