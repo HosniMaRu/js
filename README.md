@@ -29,3 +29,55 @@
 ## Ejercicio 8
 
 > Validar si el valor numerico és par o impar.
+
+### Operadores
+
+> Primer grado
+
+> > `v1 == v1`
+
+> > `v1 != v1`
+
+> > `v1 <= v1`
+
+> > `v1 >= v1`
+
+> > `v1 < v1`
+
+> > `v1 > v1`
+
+> > `v1 === v1`
+
+> > `v1 !== v1`
+
+> Segundo grado
+
+> > `=`
+
+> > `+=`
+
+> > `-=`
+
+> > `\*=`
+
+> > `/=`
+
+> > `\*\*=`
+
+> > `%=`
+
+> Bitwise
+
+> > `&` and
+
+> > `|` or
+
+> > `~` NOT
+
+> > `^` XOR
+
+> > `<<` left shift
+
+> > `>>`
+
+> > `>>>>` Unsigned right shift
