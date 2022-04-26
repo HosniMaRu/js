@@ -4,25 +4,9 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>Ejercicio 3 - Propmpt</title>
-		<script type="text/javascript">
-			function operacion() {
-				let numero = prompt("Introduce un número");
-				let numero2 = prompt("Introduce un número");
-				if (isNaN(numero) || isNaN(numero2)) {
-					if (isNaN(numero)) {
-						document.write(numero + " is not a number <br/>");
-					}
-					if (isNaN(numero2)) {
-						document.write(numero2 + " is not a number <br/>");
-					}
-				} else {
-					document.write(numero + " is a number <br/>");
-					document.write(numero2 + " is a number <br/>");
-					document.write(`${numero} + ${numero2} = ${numero + numero2}`);
-				}
-			}
-		</script>
+		<script type="text/javascript" defer src="./index.js"></script>
 		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../ejercicios.css" />
 	</head>
 	<body>
 		<a href="../index.html">BACK</a>
