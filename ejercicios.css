@@ -1,3 +1,19 @@
-a {
-	display: block;
+div ul li {
+	width: fit-content;
+}
+div ul {
+	width: 25%;
+	float: left;
+	text-align: left;
+}
+h1 {
+	font-size: 1em;
+	width: fit-content;
+	padding: 10px;
+	border: 1px solid black;
+	background-color: grey;
+	color: white;
+}
+.result {
+	width: 100%;
 }

@@ -9,9 +9,13 @@
 		<link rel="stylesheet" href="../ejercicios.css" />
 	</head>
 	<body>
-		<a href="../index.html">BACK</a>
+		<a class="back-link" href="../index.html">BACK</a>
 		<div>
-			<button onclick="printUpperCase()">Print Uppercase</button>
+			<button
+				onclick="promptToUpperCase(prompt('Write somthing in lowercase'))"
+			>
+				Print Uppercase
+			</button>
 			<p id="printUpperCase"></p>
 		</div>
 	</body>

@@ -1,0 +1,28 @@
+body {
+	background-color: #8a8a8a;
+}
+main {
+	background-color: #f2f2f2;
+	margin: 5%;
+	margin-top: 20px;
+	border-radius: 5px;
+	padding: 10px;
+}
+.center {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-radius: 20px 20px 0px 0px;
+}
+footer b {
+	color: yellow;
+}

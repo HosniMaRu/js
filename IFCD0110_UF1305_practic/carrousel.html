@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Hosni Marco Ruano" />
+		<meta
+			name="description"
+			content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110) UF1305"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./carrousel.css" />
+		<title>IFCD0110-UF1305</title>
+		<script defer src="./carousel.js"></script>
+	</head>
+	<body>
+		<main>
+			<div class="center">
+				<h2>UF1305 1</h2>
+			</div>
+			<div class="center" style="border: 2px solid black; padding: 10px">
+				<img
+					id="imagen"
+					src="./carousel/imatge.jpg"
+					alt="imatge no existent"
+					title="títol d'imatge no existent"
+					width="300"
+					height="300"
+				/>
+				<p id="imageNum">Imatge número: <b>0</b></p>
+			</div>
+			<div class="center">
+				<button onclick="contar(-1)">Back <b>-1</b></button>
+				<button onclick="contar(1)">Next <b>+1</b></button>
+			</div>
+			<div class="center">
+				<button onclick="contar(0)">Start Over <b>0</b></button>
+			</div>
+		</main>
+		<footer>
+			<p><b>author</b>: Hosni Marco Ruano</p>
+			<p><a href="mailto:hosni.marco@mail.com">hosni.marco@mail.com</a></p>
+			<p>
+				<b>nom del curs</b>: CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)
+			</p>
+			<p><b>data</b>: 10/05/2022</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script>
+			let array = [1, 2, 3, 4, ["uno", "dos", "tres", "cuatro"]];
+			array.length;
+			alert(array[4][3]);
+			// let posicion = 0;
+			// const array = ["uno", "dos", "tres"];
+			// const posicionesMax = array.length;
+			function funcioncosa(param) {
+				if (posicion == 1 && param == -1) {
+					posicion = array.length + 1;
+				}
+				posicion = posicion + param;
+				if (posicion > posicionesMax) {
+					posicion = 1;
+				}
+				console.log(posicion);
+				document.getElementById("laP").innerHTML = array[posicion - 1];
+			}
+		</script>
+	</head>
+	<body>
+		<p id="laP"></p>
+		<button onclick="funcioncosa(+1)">+1</button>
+		<button onclick="funcioncosa(-1)">-1</button>
+	</body>
+</html>

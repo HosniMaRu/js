@@ -9,9 +9,13 @@
 		<link rel="stylesheet" href="../ejercicios.css" />
 	</head>
 	<body>
-		<a href="../index.html">BACK</a>
+		<a class="back-link" href="../index.html">BACK</a>
 		<div>
-			<button onclick="ej6()">Check number - ej6</button>
+			<button
+				onclick="document.getElementById('result').innerHTML = checkNumber(prompt('Introduzca un numero'))"
+			>
+				Check number - ej6
+			</button>
 			<p id="result"></p>
 		</div>
 	</body>

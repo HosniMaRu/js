@@ -30,54 +30,24 @@
 
 > Validar si el valor numerico és par o impar.
 
-### Operadores
+## Ejercicio Form 1
 
-> Primer grado
+> Realiza una página que muestre un formulario y verifique la entrada de un número que esté comprendido entre 1..100.
 
-> > `v1 == v1`
-
-> > `v1 != v1`
-
-> > `v1 <= v1`
-
-> > `v1 >= v1`
-
-> > `v1 < v1`
-
-> > `v1 > v1`
-
-> > `v1 === v1`
-
-> > `v1 !== v1`
-
-> Segundo grado
-
-> > `=`
-
-> > `+=`
-
-> > `-=`
-
-> > `\*=`
-
-> > `/=`
-
-> > `\*\*=`
-
-> > `%=`
-
-> Bitwise
-
-> > `&` and
-
-> > `|` or
-
-> > `~` NOT
-
-> > `^` XOR
-
-> > `<<` left shift
-
-> > `>>`
-
-> > `>>>` Unsigned right shift
+```function informar(method, url) {
+	let number = document.getElementsByName("number")[0].value;
+	if (number == "" || isNaN(number)) {
+		alert("Number please!");
+	} else {
+		if (1 <= number && number <= 100) {
+			let form = document.getElementById("miFormulario");
+			form.method = method;
+			form.action = url;
+			form.submit();
+			alert("Gracias!");
+		} else {
+			alert("Numero entre 1 y 100!");
+		}
+	}
+}`
+```

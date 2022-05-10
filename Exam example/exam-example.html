@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Exam Example</title>
+		<script defer src="./exam-example.js"></script>
+	</head>
+	<body>
+		<form id="formulario">
+			<input
+				id="inputFormula"
+				placeholder="input formula"
+				type="text"
+				onkeyup="calcula(this.value)"
+			/>
+			<input id="printFormula" disabled type="text" />
+			<br />
+			<br />
+			<input
+				type="text"
+				placeholder="full name"
+				id="fullName"
+				onkeyup="checkName(this.value)"
+			/>
+			<br />
+			<br />
+			<input
+				type="text"
+				placeholder="replace"
+				onkeyup="replaceEntities(this.value), replaceHtmlTags(this.value)"
+			/>
+			<input type="text" id="printReplaceEntities" />
+			<input type="text" id="printReplaceHtmlTags" />
+			<br /><br />
+			<input
+				type="email"
+				placeholder="email"
+				onkeyup="checkEmail(this.value)"
+			/>
+			<input type="text" id="printCheckEmail" />
+			<br /><br />
+			<input id="submit" type="submit" />
+		</form>
+	</body>
+</html>

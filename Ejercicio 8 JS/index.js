@@ -1,11 +1,22 @@
-function ej8() {
-	let askNumber = prompt("Introduzca un numero");
-	const getElement = document.getElementById("result");
-	if (!isNaN(askNumber)) {
+/**
+ * *	Valida si el valor existe y es un numero
+ * @param {number} askNumber Valor recibido mediante prompt
+ * @returns	Si askNumber es par o impar
+ */
+function oddPair(askNumber) {
+	if (askNumber != "" && !isNaN(askNumber)) {
 		if (askNumber % 2 == true) {
-			getElement.innerHTML = `El numero ${askNumber} es impar`;
+			return `${askNumber} es impar`;
 		} else {
-			getElement.innerHTML = `El numero ${askNumber} es par`;
+			return `${askNumber} es par`;
 		}
+	} else {
+		return `${askNumber} no és un valor valido`;
 	}
 }
+console.assert(oddPair("") == ` no és un valor valido`, ""); // Assert --> "" return ` no és un valor valido`
+console.assert(oddPair("a") == `a no és un valor valido`, ""); // Assert --> "" return ` no és un valor valido`
+console.assert(oddPair("1") == `1 es impar`, ""); // Assert --> "" return `1 es impar`
+console.assert(oddPair(1) == `1 es impar`, ""); // Assert --> "" return `1 es impar`
+console.assert(oddPair("2") == `2 es par`, ""); // Assert --> "" return `2 es par`
+console.assert(oddPair(2) == `2 es par`, ""); // Assert --> "" return `2 es par`

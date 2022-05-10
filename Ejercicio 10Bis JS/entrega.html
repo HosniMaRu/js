@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Ejercicio 10 Bis</title>
+		<style>
+			div div div {
+				width: 50px;
+				height: 50px;
+				border: black solid 1px;
+				margin: 50px;
+				display: inline-block;
+			}
+			.red {
+				background-color: red;
+			}
+			.green {
+				background-color: green;
+			}
+			.blue {
+				background-color: blue;
+			}
+			.cyan {
+				background-color: cyan;
+			}
+			.magenta {
+				background-color: magenta;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div>
+				<div class="red" id="red"></div>
+				<div class="green" id="green"></div>
+				<div class="blue" id="blue"></div>
+				<div class="cyan" id="cyan"></div>
+				<div class="magenta" id="magenta"></div>
+			</div>
+		</div>
+		<script>
+			document.getElementById("red").addEventListener("mouseover", myFunction);
+			function myFunction(color) {
+				document.bgColor = color;
+			}
+			// x.addEventListener("mouseout", myThirdFunction);
+			// document.getElementById("red").onmouseover = () => {
+			// 	document.bgColor = "red";
+			// };
+			document.getElementById("red").onmouseout = () => {
+				document.bgColor = "white";
+			};
+			document.getElementById("green").onmouseover = () => {
+				document.bgColor = "green";
+			};
+			document.getElementById("green").onmouseout = () => {
+				document.bgColor = "white";
+			};
+			document.getElementById("blue").onmouseover = () => {
+				document.bgColor = "blue";
+			};
+			document.getElementById("blue").onmouseout = () => {
+				document.bgColor = "white";
+			};
+			document.getElementById("cyan").onmouseover = () => {
+				document.bgColor = "cyan";
+			};
+			document.getElementById("cyan").onmouseout = () => {
+				document.bgColor = "white";
+			};
+			document.getElementById("magenta").onmouseover = () => {
+				document.bgColor = "magenta";
+			};
+			document.getElementById("magenta").onmouseout = () => {
+				document.bgColor = "white";
+			};
+		</script>
+	</body>
+</html>

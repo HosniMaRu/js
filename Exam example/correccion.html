@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Correccion examen</title>
+	</head>
+	<body>
+		<form id="formulario">
+			<input type="text" onkeyup="aLaFuncion(this.value)" />
+			<input type="text" id="salida" />
+			<script>
+				const inputSalida = formulario.salida;
+				function aLaFuncion(text) {
+					try {
+						inputSalida.value = eval(text);
+						if (inputSalida.value > 0) {
+							inputSalida.style.color = "green";
+						} else {
+							inputSalida.style.color = "red";
+						}
+					} catch (error) {
+						inputSalida.value = "";
+					}
+					if (text == "") inputSalida.value = "";
+				}
+			</script>
+			<br />
+			<br />
+			<input type="text" onkeyup="aLaFuncionNombre(this.value)" />
+			<input type="text" id="nombreYApellidos" />
+			<script>
+				const inputNombreYApellidos = formulario.nombreYApellidos;
+				function aLaFuncionNombre(text) {
+					let textSplit = text.trim().split(" ");
+					for (let i = 0; i < textSplit.length; i++) {
+						if (textSplit[i] == "") {
+							textSplit.splice(i, 1);
+							i--;
+						}
+					}
+					console.log(textSplit);
+					if (
+						textSplit.length == 3 &&
+						textSplit[0].length >= 3 &&
+						textSplit[1].length >= 3 &&
+						textSplit[2].length >= 3 &&
+						textSplit[1] != textSplit[2]
+					) {
+						inputNombreYApellidos.style.backgroundColor = "green";
+					} else {
+						inputNombreYApellidos.style.backgroundColor = "red";
+					}
+				}
+			</script>
+			<br />
+			<br />
+			<input type="button" value="Enviar" disabled />
+		</form>
+	</body>
+</html>

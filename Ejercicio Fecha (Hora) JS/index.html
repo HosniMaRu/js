@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Ejercicio 12</title>
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="../ejercicios.css" />
+		<script defer src="./index.js"></script>
+		<style>
+			#clock,
+			#stopBtn {
+				display: none;
+			}
+			h2 {
+				color: blue;
+			}
+			#clock {
+				border: black solid 1px;
+				width: fit-content;
+				margin: auto;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<a class="back-link" href="../index.html">BACK</a>
+		<h2 id="dia-actual"></h2>
+		<div id="showDate"></div>
+		<h2 id="hora-actual"></h2>
+		<div id="clock"></div>
+		<button id="startBtn" onclick="startclock()">START</button>
+		<button id="stopBtn" onclick="abortclock()">STOP</button>
+	</body>
+</html>
