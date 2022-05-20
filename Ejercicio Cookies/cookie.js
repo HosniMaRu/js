@@ -1,6 +1,7 @@
 const selectDate = document.getElementById("select-date");
 const selectDays = document.getElementById("selectDays-container");
 const setCookieButton = document.getElementById("set-cookie");
+
 document.getElementById("createCookie").addEventListener("click", showCreateCookie);
 function showCreateCookie() {
 	document.getElementById("input-content").style.visibility = "visible";
@@ -13,6 +14,7 @@ function showSelectDate() {
 	selectDate.style.visibility = "visible";
 	setCookieButton.style.visibility = "visible";
 }
+
 document.getElementById("selectDaysContent").addEventListener("click", showSelectDays);
 function showSelectDays() {
 	selectDate.style.visibility = "hidden";
@@ -79,7 +81,6 @@ function checkCookie() {
 }
 
 const select = document.getElementById("selector");
-
 function listCookies() {
 	let cookies = document.cookie.split(";");
 	for (let i = 0; i < cookies.length; i++) {
