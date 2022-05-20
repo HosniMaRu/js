@@ -1,9 +1,9 @@
 let posicion = 0;
 const arrayFotos = [
-	"carousel/céline.jpg",
-	"carousel/enrique-hoyos.jpg",
-	"carousel/shad-meeg.jpg",
-	"carousel/tatiana.jpg",
+	"céline.jpg",
+	"enrique-hoyos.jpg",
+	"shad-meeg.jpg",
+	"tatiana.jpg",
 	"empty.jpg",
 ];
 const posicionesArray = arrayFotos.length;
@@ -11,7 +11,7 @@ const imagenTag = document.getElementById("imagen");
 const imageNum = document.getElementById("imageNum");
 
 function contar(number) {
-	let altTitle, text, textCapitalize;
+	let text, textCapitalize;
 	if (number != 0) {
 		posicion = posicion + number;
 		if (posicion > posicionesArray - 1) {
@@ -23,15 +23,10 @@ function contar(number) {
 	} else {
 		posicion = 0;
 	}
-
-	altTitle = arrayFotos[posicion].split("/");
-	altTitle = altTitle[altTitle.length - 1].split(".");
-	text = altTitle[0];
-
+	text = arrayFotos[posicion].split(".")[0];
 	textCapitalize = text.charAt(0).toUpperCase() + text.slice(1);
-
-	imagenTag.src = "./" + arrayFotos[posicion];
 	imageNum.innerHTML = "Imatge número: <b>" + posicion + "</b>";
+	imagenTag.src = "./carousel/" + arrayFotos[posicion];
 	imagenTag.alt = text;
 	imagenTag.title = textCapitalize;
 }

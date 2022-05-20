@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cookies</title>
+		<script defer src="./cookie.js"></script>
+		<style>
+			.input-content {
+				visibility: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="createCookie-Content">
+			<button id="createCookie">Create Cookie</button>
+			<br />
+			<br />
+			<div id="input-content" class="input-content">
+				<input type="text" id="inputName" class="createCookie" placeholder="Cookie name" />
+				<input type="text" id="inputValue" class="createCookie" placeholder="Cookie value" />
+				<br />
+				<br />
+				<button id="selectDateContent">Seleccionar fecha</button>
+				<button id="selectDaysContent">Seleccionar dias</button>
+				<input type="date" class="input-content" id="select-date" />
+				<br />
+				<br />
+				<div id="selectDays-container" class="input-content">
+					<label for="select-years">Años</label>
+					<input type="number" id="select-years" />
+					<br />
+					<br />
+					<label for="select-months">Meses</label>
+					<input type="number" id="select-months" />
+					<br />
+					<br />
+					<label for="select-days">Dias</label>
+					<input type="number" id="select-days" />
+				</div>
+				<br />
+				<br />
+				<button class="input-content" id="set-cookie">Set Cookie</button>
+			</div>
+		</div>
+		<br />
+		<div>
+			<select id="selector"></select>
+			<button onclick="alert(funcionCookie(prompt('Nombre de la cookie')))">Check Cookie</button>
+			<button id="leerContenido">Leer contenido</button>
+			<button id="modifyCookie">Modificar cookie</button>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Listener</title>
+	</head>
+	<body>
+		<button class="nextButton">A</button>
+		<button class="nextButton">B</button>
+		<button id="buttonC">C</button>
+		<script>
+			let buttons = document.querySelectorAll(".nextButton");
+			for (let i = 0; i < buttons.length; i++) {
+				buttons[i].addEventListener("click", () => {
+					llamarFuncion("Hello World!");
+				});
+			}
+
+			let buttonC = document.getElementById("buttonC");
+			buttonC.addEventListener("click", () => {
+				llamarFuncion("Hello World!");
+			});
+			buttonC.addEventListener("mouseover", () => {
+				buttonC.style = "background:red;color:white";
+			});
+
+			function llamarFuncion(text) {
+				alert(text);
+			}
+		</script>
+	</body>
+</html>

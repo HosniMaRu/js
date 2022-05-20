@@ -3,14 +3,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="author" content="Hosni Marco Ruano" />
-		<meta
-			name="description"
-			content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110) UF1305"
-		/>
+		<meta name="description" content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110) UF1305" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>IFCD0110-UF1305</title>
 		<link rel="stylesheet" href="./form.css" />
 		<script defer src="./form.js"></script>
-		<title>IFCD0110-UF1305</title>
 		<style>
 			.corregir {
 				border: 2px solid red;
@@ -37,14 +34,13 @@
 						</div>
 						<div class="col-75">
 							<input
-								onkeyup="checkName(this.value)"
+								onkeyup="checkName(this.value, this)"
 								type="text"
 								id="fname"
 								name="firstname"
 								placeholder="Nom"
-								class="corregir"
 							/>
-							<p class="labelError" style="visibility: visible">
+							<p class="labelError" id="nameErrorExplain" style="visibility: hidden">
 								*Explica ací l'error
 							</p>
 						</div>
@@ -55,14 +51,13 @@
 						</div>
 						<div class="col-75">
 							<input
-								onkeyup="checLastName(this.value)"
+								onkeyup="checLastName(this.value, this)"
 								type="text"
 								id="lname"
 								name="lastname"
 								placeholder="Cognom1 Cognom2 ..."
-								class="correcte"
 							/>
-							<p class="labelError" style="visibility: hidden">
+							<p class="labelError" id="lNameErrorExplain" style="visibility: hidden">
 								*Explica ací l'error
 							</p>
 						</div>
@@ -73,13 +68,13 @@
 						</div>
 						<div class="col-75">
 							<input
-								onkeyup="checkEmail(this.value)"
+								onkeyup="checkEmail(this.value, this)"
 								type="email"
 								id="email"
 								name="email"
 								placeholder="correu@email.com"
 							/>
-							<p class="labelError" style="visibility: hidden">
+							<p id="emailErrorExplain" class="labelError" style="visibility: hidden">
 								*Explica ací l'error
 							</p>
 						</div>
@@ -90,13 +85,13 @@
 						</div>
 						<div class="col-75">
 							<input
-								onkeyup="checkPass(this.value)"
+								onkeyup="checkPass(this.value, this)"
 								type="password"
 								id="password"
 								name="password"
 								placeholder="Contrasenya"
 							/>
-							<p id="pass" class="align_right" style="color: red">res segur</p>
+							<p id="passErrorExplain" class="align_right pass_text" style="color: red"></p>
 						</div>
 					</div>
 					<div class="row">
@@ -105,14 +100,13 @@
 						</div>
 						<div class="col-75">
 							<input
-								onkeyup="checkDNI(this.value)"
+								onkeyup="checkDNI(this.value, this)"
 								type="text"
 								id="dni"
 								name="dni"
 								placeholder="Format de DNI: 12345678Z"
-								class="corregir"
 							/>
-							<p class="labelError" style="visibility: visible">
+							<p class="labelError" id="dniErrorExplain" style="visibility: hidden">
 								*Explica ací l'error
 							</p>
 						</div>
@@ -130,9 +124,7 @@
 								placeholder="Escriu el missatge aquí. Màxim 600 caràcters"
 								style="height: 200px"
 							></textarea>
-							<p class="align_right">
-								<b id="form_count_chars_b" style="color: red">0</b>/650
-							</p>
+							<p class="align_right"><b id="form_count_chars_b" style="color: red">0</b>/650</p>
 						</div>
 					</div>
 					<br />
@@ -142,22 +134,40 @@
 							<label for="preu">Ciutats:</label>
 						</div>
 						<div class="col-75">
-							<label for="checkbox_estambul"
-								><input
+							<label for="checkbox_estambul">
+								<input
+									onclick="checkCities(this.value, this.checked)"
 									type="checkbox"
 									id="checkbox_estambul"
-									value="estambul"
+									value="300"
 								/>
 								Estambul</label
 							>
 							<label for="checkbox_ubud"
-								><input type="checkbox" id="cbox1" value="ubud" /> Ubud</label
+								><input
+									onclick="checkCities(this.value, this.checked)"
+									type="checkbox"
+									id="checkbox_ubud"
+									value="400"
+								/>
+								Ubud</label
 							>
 							<label for="checkbox_kyoto"
-								><input type="checkbox" id="cbox1" value="kyoto" /> Kyoto</label
+								><input
+									onclick="checkCities(this.value, this.checked)"
+									type="checkbox"
+									id="checkbox_kyoto"
+									value="75"
+								/>
+								Kyoto</label
 							>
 							<label for="checkbox_oaxaca"
-								><input type="checkbox" id="cbox1" value="oaxaca" />
+								><input
+									onclick="checkCities(this.value, this.checked)"
+									type="checkbox"
+									id="checkbox_oaxaca"
+									value="12.5"
+								/>
 								Oaxaca</label
 							>
 						</div>
@@ -167,7 +177,7 @@
 							<label for="preu_total">Preu total:</label>
 						</div>
 						<div class="col-75">
-							<p><b>0</b> €</p>
+							<p><b id="totalPrice">0</b> €</p>
 						</div>
 					</div>
 					<div class="row">
@@ -176,6 +186,7 @@
 						</div>
 						<div class="col-75">
 							<input
+								onclick="checkConditions(this.checked)"
 								type="checkbox"
 								name="acords_i_condicions"
 								value="yes"
@@ -189,21 +200,20 @@
 							type="submit"
 							value="Comprar"
 							disabled="disabled"
+							onclick="return confirm('Desea continuar?')"
 						/>
 					</div>
 					<br />
 				</form>
 				<div class="row">
-					<button class="print">Imprimeix</button>
+					<button onmouseup="window.print()" class="print">Imprimeix</button>
 				</div>
 			</div>
 		</main>
 		<footer>
 			<p><b>author</b>:Hosni Marco Ruano</p>
 			<p><a href="mailto:hosni.marco@mail.com">hosni.marco@mail.com</a></p>
-			<p>
-				<b>nom del curs</b>: CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)
-			</p>
+			<p><b>nom del curs</b>: CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)</p>
 			<p><b>data</b>: 10/05/2022</p>
 		</footer>
 	</body>

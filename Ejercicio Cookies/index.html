@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script defer src="./index.js"></script>
+	</head>
+	<body>
+		<!-- 
+            //TODO:BOTON1-> Crear cookie
+            //TODO:BOTON1->  Cuanto tiempo existira
+            //TODO:BOTON1-> Seleccionar fecha
+
+            //TODO:BOTON2-> Comprobar si existe cookie
+
+            //TODO:BOTON3-> Leer contenido
+
+            //TODO:BOTON4-> Modificar la cookie
+
+            TODO:BOTON5-> Borrar la cookie
+        -->
+		<input type="text" id="cookieValue" placeholder="Name" />
+		<input type="text" id="expiresIn" placeholder="Expires in" />
+		<input type="date" id="selectDate" />
+		<button onclick="createCookie()">Crear</button>
+
+		<input type="text" id="checkCookie" placeholder="Check cookie" />
+		<button onclick="checkCookie(undefined ,'check')">Comprobar</button><br />
+
+		<button onclick="printContent()">Obtener cookie</button>
+		<input type="text" id="modifyCookie" placeholder="modify" />
+		<button onclick="modifyCookie()">Cambiar cookie</button>
+		<button onclick="eraseCookie()">Erase cookie</button>
+	</body>
+</html>
