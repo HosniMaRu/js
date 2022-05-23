@@ -47,9 +47,19 @@
 		<br />
 		<div>
 			<select id="selector"></select>
-			<button onclick="alert(funcionCookie(prompt('Nombre de la cookie')))">Check Cookie</button>
-			<button id="leerContenido">Leer contenido</button>
-			<button id="modifyCookie">Modificar cookie</button>
+			<button id="selectCookie">Select Cookie</button>
+		</div>
+		<div id="selectCookie-container" class="input-content">
+			<h2>
+				Name:
+				<span id="cookieName"></span>
+			</h2>
+			<h2>
+				Value:
+				<span id="cookieValue"></span>
+			</h2>
+			<button id="deleteCookie">Delete</button>
+			<button id="modifyCookie">Modify Cookie</button>
 		</div>
 	</body>
 </html>

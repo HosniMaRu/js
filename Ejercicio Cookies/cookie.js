@@ -1,6 +1,10 @@
 const selectDate = document.getElementById("select-date");
 const selectDays = document.getElementById("selectDays-container");
 const setCookieButton = document.getElementById("set-cookie");
+const select = document.getElementById("selector");
+const cookieName = document.getElementById("cookieName");
+const cookieValue = document.getElementById("cookieValue");
+const selectCookieContainer = document.getElementById("selectCookie-container");
 
 document.getElementById("createCookie").addEventListener("click", showCreateCookie);
 function showCreateCookie() {
@@ -23,88 +27,108 @@ function showSelectDays() {
 	setCookieButton.style.visibility = "visible";
 }
 
-// check cookie
-function funcionCookie(cname) {
-	let name = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie);
-	let ca = decodedCookie.split(";");
-	for (let i = 0; i < ca.length; i++) {
-		let c = ca[i].trim();
-		if (c.indexOf(name) == 0) {
-			return true;
-		}
-	}
-	return false;
+document.getElementById("selectCookie").addEventListener("click", selectCookie);
+function selectCookie() {
+	selectCookieContainer.style.visibility = "visible";
+	let getCookieValue = select.value.split("=")[1];
+	let getCookieName = select.value.split("=")[0];
+	cookieName.innerHTML = getCookieName;
+	cookieValue.innerHTML = getCookieValue;
 }
 
-document.getElementById("set-cookie").addEventListener("click", () => {
+document.getElementById("modifyCookie").addEventListener("click", modifyCookie);
+function modifyCookie() {
+	showCreateCookie();
+	let cookies = decodeURIComponent(document.cookie).split(";");
+	let value = cookieValue.innerHTML;
+	for (let i = 0; i < cookies.length; i++) {
+		if (cookies[i].split("=")[1] == value) {
+			let cname = cookies[i].split("=")[0];
+			let cvalue = cookies[i].split("=")[1];
+			document.getElementById("inputName").value = cname;
+			document.getElementById("inputValue").value = cvalue;
+		}
+	}
+}
+
+document.getElementById("set-cookie").addEventListener("click", switchDateDays);
+function switchDateDays() {
 	let cname = document.getElementById("inputName").value;
 	let cvalue = document.getElementById("inputValue").value;
 	let exdays = document.getElementById("select-date").value;
-	if (exdays) {
+	if (selectDate.style.visibility === "visible") {
 		setCookieDate(cname, cvalue, exdays);
 	} else {
-		console.log("kk");
 		setCookieDays(cname, cvalue);
 	}
-});
-
+	listCookies();
+}
 function setCookieDate(cname, cvalue, exdays) {
 	exdays = new Date(exdays);
 	let expires = "expires=" + exdays.toUTCString();
 	document.cookie =
-		encodeURIComponent(cname) + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+		encodeURIComponent(cname).trim() +
+		"=" +
+		encodeURIComponent(cvalue).trim() +
+		";" +
+		expires +
+		";path=/";
 }
 //TODO: cuando usas dias
 function setCookieDays(cname, cvalue) {
 	let years = document.getElementById("select-years").value * 365 * 24 * 60 * 60 * 1000;
 	let months = document.getElementById("select-months").value * 31 * 24 * 60 * 60 * 1000;
 	let days = document.getElementById("select-days").value * 24 * 60 * 60 * 1000;
-	let calcMiliseconds = years + months + days;
+	let gmt2 = 2 * 60 * 60 * 1000;
+	let calcMiliseconds = years + months + days + gmt2;
 	let dateMili = new Date().getTime();
 	let date = new Date(calcMiliseconds + dateMili);
 	let expires = "expires=" + date.toUTCString();
 	document.cookie =
-		encodeURIComponent(cname) + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+		encodeURIComponent(cname).trim() +
+		"=" +
+		encodeURIComponent(cvalue).trim() +
+		";" +
+		expires +
+		";path=/";
 }
 
-function checkCookie() {
-	let username = getCookie("username");
-	if (username != "") {
-		alert("Welcome again " + username);
-	} else {
-		username = prompt("Please enter your name:", "");
-		if (username != "" && username != null) {
-			setCookie("username", username, 365);
+function removeList() {
+	let optionsClass = document.getElementsByClassName("optionCookie");
+	if (optionsClass.length > 0) {
+		for (let i = 0; i < optionsClass.length; i++) {
+			optionsClass[i].remove();
+			i--;
 		}
 	}
 }
 
-const select = document.getElementById("selector");
 function listCookies() {
-	let cookies = document.cookie.split(";");
+	removeList();
+	let cookies = decodeURIComponent(document.cookie).split(";");
 	for (let i = 0; i < cookies.length; i++) {
 		let opt = document.createElement("option");
 		opt.value = cookies[i];
+		opt.classList.add("optionCookie");
 		opt.innerHTML = cookies[i].split("=")[0];
 		select.appendChild(opt);
 	}
 }
 
-document.getElementById("leerContenido").addEventListener("click", leerContenido);
-function leerContenido() {
-	return "a";
+document.getElementById("deleteCookie").addEventListener("click", deleteCookie);
+function deleteCookie() {
+	let cookies = decodeURIComponent(document.cookie).split(";");
+	let value = cookieValue.innerHTML;
+	for (let i = 0; i < cookies.length; i++) {
+		if (cookies[i].split("=")[1] == value) {
+			let cname = cookies[i].split("=")[0].trim();
+			let cvalue = cookies[i].split("=")[1].trim();
+			let expires = "expires=" + new Date(-1).toUTCString();
+			document.cookie =
+				encodeURIComponent(cname) + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+			listCookies();
+			selectCookieContainer.style.visibility = "hidden";
+		}
+	}
 }
-
 listCookies();
-
-document.getElementById("modifyCookie").addEventListener("click", modifyCookie);
-function modifyCookie() {
-	console.log(select.value);
-	document.getElementById("preg1").style.visibility = "visible";
-	let array = select.value.split("=");
-	console.log(array[0]);
-	console.log(array[1]);
-	document.getElementById("nameCookie").value = array[0];
-	document.getElementById("valueCookie").value = array[1];
-}
