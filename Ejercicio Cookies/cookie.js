@@ -5,13 +5,25 @@ const select = document.getElementById("selector");
 const cookieName = document.getElementById("cookieName");
 const cookieValue = document.getElementById("cookieValue");
 const selectCookieContainer = document.getElementById("selectCookie-container");
+const inputContent = document.getElementById("input-content");
+const inputSelectYear = document.getElementById("select-years");
+const inputSelectMonth = document.getElementById("select-months");
+const inputSelectDays = document.getElementById("select-days");
+const inputSelectName = document.getElementById("inputName");
+const inputSelectValue = document.getElementById("inputValue");
 
 document.getElementById("createCookie").addEventListener("click", showCreateCookie);
+document.getElementById("selectDateContent").addEventListener("click", showSelectDate);
+document.getElementById("selectDaysContent").addEventListener("click", showSelectDays);
+document.getElementById("selectCookie").addEventListener("click", selectCookie);
+document.getElementById("modifyCookie").addEventListener("click", modifyCookie);
+document.getElementById("deleteCookie").addEventListener("click", deleteCookie);
+setCookieButton.addEventListener("click", switchDateDays);
+
 function showCreateCookie() {
-	document.getElementById("input-content").style.visibility = "visible";
+	inputContent.style.visibility = "visible";
 }
 
-document.getElementById("selectDateContent").addEventListener("click", showSelectDate);
 function showSelectDate() {
 	selectDays.style.visibility = "hidden";
 	selectDays.value = "";
@@ -19,7 +31,6 @@ function showSelectDate() {
 	setCookieButton.style.visibility = "visible";
 }
 
-document.getElementById("selectDaysContent").addEventListener("click", showSelectDays);
 function showSelectDays() {
 	selectDate.style.visibility = "hidden";
 	selectDate.value = "";
@@ -27,16 +38,15 @@ function showSelectDays() {
 	setCookieButton.style.visibility = "visible";
 }
 
-document.getElementById("selectCookie").addEventListener("click", selectCookie);
 function selectCookie() {
 	selectCookieContainer.style.visibility = "visible";
-	let getCookieValue = select.value.split("=")[1];
-	let getCookieName = select.value.split("=")[0];
+	let cookieSplit = select.value.split("=");
+	let getCookieName = cookieSplit[0];
+	let getCookieValue = cookieSplit[1];
 	cookieName.innerHTML = getCookieName;
 	cookieValue.innerHTML = getCookieValue;
 }
 
-document.getElementById("modifyCookie").addEventListener("click", modifyCookie);
 function modifyCookie() {
 	showCreateCookie();
 	let cookies = decodeURIComponent(document.cookie).split(";");
@@ -47,65 +57,66 @@ function modifyCookie() {
 			let cvalue = cookies[i].split("=")[1];
 			document.getElementById("inputName").value = cname;
 			document.getElementById("inputValue").value = cvalue;
+			setCookieButton.innerHTML = "Modify Cookie";
 		}
 	}
 }
 
-document.getElementById("set-cookie").addEventListener("click", switchDateDays);
 function switchDateDays() {
+	let expires;
 	let cname = document.getElementById("inputName").value;
 	let cvalue = document.getElementById("inputValue").value;
-	let exdays = document.getElementById("select-date").value;
 	if (selectDate.style.visibility === "visible") {
-		setCookieDate(cname, cvalue, exdays);
+		expires = setCookieDate();
 	} else {
-		setCookieDays(cname, cvalue);
+		expires = setCookieDays();
 	}
+	document.cookie =
+		encodeURIComponent(cname).trim() +
+		"=" +
+		encodeURIComponent(cvalue).trim() +
+		";" +
+		expires +
+		";path=/";
+
+	if (setCookieButton.innerHTML == "Modify Cookie") {
+		setCookieButton.innerHTML = "Create Cookie";
+	}
+	resetForm();
 	listCookies();
 }
-function setCookieDate(cname, cvalue, exdays) {
-	exdays = new Date(exdays);
-	let expires = "expires=" + exdays.toUTCString();
-	document.cookie =
-		encodeURIComponent(cname).trim() +
-		"=" +
-		encodeURIComponent(cvalue).trim() +
-		";" +
-		expires +
-		";path=/";
-}
-//TODO: cuando usas dias
-function setCookieDays(cname, cvalue) {
-	let years = document.getElementById("select-years").value * 365 * 24 * 60 * 60 * 1000;
-	let months = document.getElementById("select-months").value * 31 * 24 * 60 * 60 * 1000;
-	let days = document.getElementById("select-days").value * 24 * 60 * 60 * 1000;
-	let gmt2 = 2 * 60 * 60 * 1000;
-	let calcMiliseconds = years + months + days + gmt2;
-	let dateMili = new Date().getTime();
-	let date = new Date(calcMiliseconds + dateMili);
-	let expires = "expires=" + date.toUTCString();
-	document.cookie =
-		encodeURIComponent(cname).trim() +
-		"=" +
-		encodeURIComponent(cvalue).trim() +
-		";" +
-		expires +
-		";path=/";
+
+function resetForm() {
+	inputSelectName.value = "";
+	inputSelectValue.value = "";
+	inputSelectYear.value = "";
+	inputSelectMonth.value = "";
+	inputSelectDays.value = "";
+	selectDate.style.visibility = "hidden";
+	selectDays.style.visibility = "hidden";
+	inputContent.style.visibility = "hidden";
+	setCookieButton.style.visibility = "hidden";
 }
 
-function removeList() {
-	let optionsClass = document.getElementsByClassName("optionCookie");
-	if (optionsClass.length > 0) {
-		for (let i = 0; i < optionsClass.length; i++) {
-			optionsClass[i].remove();
-			i--;
-		}
-	}
+function setCookieDate() {
+	let exdays = document.getElementById("select-date").value;
+	exdays = new Date(exdays);
+	return (expires = "expires=" + exdays.toUTCString());
+}
+
+function setCookieDays() {
+	let years = inputSelectYear.value * 365;
+	let months = (years + inputSelectMonth.value) * 31;
+	let days = (months + inputSelectDays.value) * 24 * 60 * 60 * 1000;
+	let gmt2 = 2 * days;
+	let calcMiliseconds = days + gmt2;
+	let dateMili = new Date() + new Date(calcMiliseconds);
+	return (expires = "expires=" + date.toUTCString());
 }
 
 function listCookies() {
-	removeList();
 	let cookies = decodeURIComponent(document.cookie).split(";");
+	select.innerHTML = "";
 	for (let i = 0; i < cookies.length; i++) {
 		let opt = document.createElement("option");
 		opt.value = cookies[i];
@@ -115,7 +126,6 @@ function listCookies() {
 	}
 }
 
-document.getElementById("deleteCookie").addEventListener("click", deleteCookie);
 function deleteCookie() {
 	let cookies = decodeURIComponent(document.cookie).split(";");
 	let value = cookieValue.innerHTML;

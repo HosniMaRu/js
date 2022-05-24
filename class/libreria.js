@@ -49,4 +49,3 @@ for (let i = 0; i < 10; i++) {
 		`tematica${i + 1}`,
 	]);
 }
-// console.log(Book.pintarTematicaAcumulada(listaLibros[0]?.tematica));
