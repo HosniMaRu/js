@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Hosni Marco Ruano" />
+		<meta name="description" content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110) UF1306" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./styles.css" />
+		<title>IFCD0110-UF1306</title>
+		<script defer src="./cookie.js"></script>
+	</head>
+	<body>
+		<main>
+			<div class="center">
+				<h2>UF1306 1</h2>
+			</div>
+			<div class="container">
+				<button id="showCreate" onclick="showCreateCookie()">Crear galeta</button>
+				<div id="create-cookie" class="hidden-container">
+					<input id="inputName" placeholder="Nom" type="text" />
+					<input id="inputValue" placeholder="Valor" type="text" /><br />
+					<button onclick="showDays()">Seleccionar dies</button>
+					<div id="select-days" class="hidden-container">
+						<input id="inputDays" placeholder="Dies" type="number" id="inputDays" />
+						<input id="inputMonths" placeholder="Mesos" type="number" id="inputMonths" />
+						<input id="inputYears" placeholder="Anys" type="number" id="inputYears" />
+						<button onclick="createCookie('days')">Crear</button>
+					</div>
+					<button onclick="showCalendar()">Seleccionar calendari</button>
+					<div id="select-calendar" class="hidden-container">
+						<input type="date" id="dateInput" />
+						<button onclick="createCookie('calendar')">Crear</button>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<button onclick="listCookies()">Llistar totes les galetes</button>
+				<table id="table" class="hidden-container">
+					<thead>
+						<th>Nom</th>
+						<th>Valor</th>
+					</thead>
+					<tbody id="tbody"></tbody>
+				</table>
+			</div>
+			<div class="container">
+				<div class="box">
+					<select name="llistaGaletes" id="llistaGaletes"></select>
+				</div>
+				<div id="show-cookieSelected"  class="hidden-container">
+					<h3>Nom: <span id="showCookieName"></span></span></h3>
+					<h3>Valor: <span id="showCookieValue"></span></span></h3>
+					<h3 id="deleteInfo"></h3>
+					<button onclick="modifyCookie()">Modificar galeta</button>
+					<button onclick="deleteCookie()">Eliminar galeta</button>
+				</div>
+				<button onclick="showCookieData()">Seleccionar galeta</button>
+			</div>
+		</main>
+		<footer>
+			<p><b>author</b>: Hosni Marco Ruano</p>
+			<p><a href="mailto:hosni.marco@mail.com">hosni.marco@mail.com</a></p>
+			<p><b>nom del curs</b>: CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)</p>
+			<p><b>data</b>: 26/05/2022</p>
+		</footer>
+	</body>
+</html>

@@ -40,9 +40,8 @@ function showSelectDays() {
 
 function selectCookie() {
 	selectCookieContainer.style.visibility = "visible";
-	let cookieSplit = select.value.split("=");
-	let getCookieName = cookieSplit[0];
-	let getCookieValue = cookieSplit[1];
+	let getCookieValue = select.value.split("=")[1];
+	let getCookieName = select.value.split("=")[0]; // TODO: solo un split!
 	cookieName.innerHTML = getCookieName;
 	cookieValue.innerHTML = getCookieValue;
 }
@@ -85,7 +84,6 @@ function switchDateDays() {
 	resetForm();
 	listCookies();
 }
-
 function resetForm() {
 	inputSelectName.value = "";
 	inputSelectValue.value = "";
@@ -97,7 +95,6 @@ function resetForm() {
 	inputContent.style.visibility = "hidden";
 	setCookieButton.style.visibility = "hidden";
 }
-
 function setCookieDate() {
 	let exdays = document.getElementById("select-date").value;
 	exdays = new Date(exdays);
@@ -109,12 +106,24 @@ function setCookieDays() {
 	let months = (years + inputSelectMonth.value) * 31;
 	let days = (months + inputSelectDays.value) * 24 * 60 * 60 * 1000;
 	let gmt2 = 2 * days;
-	let calcMiliseconds = days + gmt2;
-	let dateMili = new Date() + new Date(calcMiliseconds);
+	let calcMiliseconds = years + months + days + gmt2;
+	let dateMili = new Date().getTime();
+	let date = new Date(calcMiliseconds + dateMili);
 	return (expires = "expires=" + date.toUTCString());
 }
 
+// function removeList() {
+// 	let optionsClass = document.getElementsByClassName("optionCookie");
+// 	if (optionsClass.length > 0) {
+// 		for (let i = 0; i < optionsClass.length; i++) {
+// 			optionsClass[i].remove();
+// 			i--;
+// 		}
+// 	}
+// }
+
 function listCookies() {
+	// removeList();
 	let cookies = decodeURIComponent(document.cookie).split(";");
 	select.innerHTML = "";
 	for (let i = 0; i < cookies.length; i++) {
